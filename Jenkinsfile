@@ -7,15 +7,15 @@ pipeline {
       }
     }
 
-    stage('folder') {
+    stage('building the docker image') {
       steps {
-        sh '''ls
+        sh 'docker-compose build'
+      }
+    }
 
-
-
-
-pwd
-'''
+    stage('containerizing') {
+      steps {
+        sh 'docker-compose up --detach'
       }
     }
 
